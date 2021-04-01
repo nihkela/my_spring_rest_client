@@ -11,9 +11,13 @@ public class App {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MyConfig.class);
 
         Communication communication = context.getBean("communication", Communication.class);
-        Employee empById = communication.getEmployee(1);
+//        Employee empById = communication.getEmployee(1);
+//
+//        System.out.println(empById);
 
-        System.out.println(empById);
+        Employee employee = new Employee("Sveta", "Sokolova", "IT", 1200);
+        employee.setId(14);
+        communication.saveEmployee(employee);
 
 
     }

@@ -34,7 +34,17 @@ public class Communication {
     }
 
     public void saveEmployee(Employee employee) {
+        int id = employee.getId();
 
+        if(id == 0) {
+            ResponseEntity<String> responseEntity = restTemplate.postForEntity(URL, employee, String.class);
+            System.out.println("New employee was added to Database");
+            System.out.println(responseEntity.getBody());
+        }
+        else {
+            restTemplate.put(URL, employee);
+            System.out.println("Employee with ID = " + id + " was updated");
+        }
     }
 
     public void deleteEmployee(int id) {
